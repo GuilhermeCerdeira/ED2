@@ -9,6 +9,11 @@ typedef struct processo{
     int prioridade;
 } processo;
 
+typedef struct heap{
+    struct processo *processo;
+    
+}maxheap;
+
 typedef struct no{
     struct processo *processo;
     struct no *esquerda;
