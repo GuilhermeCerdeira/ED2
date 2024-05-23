@@ -2,6 +2,12 @@ InserirAVL 1 EditorTexto 10 PRONTO
 InserirAVL 2 Compilador 5 PRONTO
 InserirAVL 3 NavegadorWeb 8 PRONTO
 InserirAVL 9 LeagueofLegends 7 PRONTO
+InserirAVL 4 DarkSouls3 9 PRONTO
 ListarAVL
+ListarHeap
 TerminarAVL 2
+ListarAVL
+RemoverHeap
+AlterarHeap 4 10
+ListarHeap
 ListarAVL
