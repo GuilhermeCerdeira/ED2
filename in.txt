@@ -5,9 +5,10 @@ InserirAVL 9 LeagueofLegends 7 PRONTO
 InserirAVL 4 DarkSouls3 9 PRONTO
 ListarAVL
 ListarHeap
+ListarAVL
+ListarHeap
 TerminarAVL 2
 ListarAVL
-RemoverHeap
-AlterarHeap 4 10
-ListarHeap
+InserirAVL 6 CS2 7 PRONTO
 ListarAVL
+ListarHeap

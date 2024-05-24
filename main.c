@@ -62,7 +62,7 @@ int main(){
         } else if(strcmp(operacao, "ListarAVL") == 0){
             imprimirAVL(raiz);
         } else if(strcmp(operacao, "TerminarAVL") == 0){
-            fscanf(infile, "%d", &codigo);
+            printf("%d ", codigo);
             raiz = terminarAVL(raiz, heap, codigo);
         } else if(strcmp(operacao, "AlterarHeap") == 0){
             fscanf(infile, "%d %d", &codigo, &prioridade);
@@ -216,7 +216,7 @@ Processo *removerHeap(MaxHeap *heap, No *raiz){
         heap->vetor[1] = heap->vetor[heap->vetor[0]->prioridade];
         heap->vetor[0]->prioridade--;
         heapify(heap, 1);
-        return ;
+        return jorge;
     }
     return NULL;
 }
