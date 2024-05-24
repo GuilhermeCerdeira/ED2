@@ -62,7 +62,6 @@ int main(){
         } else if(strcmp(operacao, "ListarAVL") == 0){
             imprimirAVL(raiz);
         } else if(strcmp(operacao, "TerminarAVL") == 0){
-            printf("%d ", codigo);
             raiz = terminarAVL(raiz, heap, codigo);
         } else if(strcmp(operacao, "AlterarHeap") == 0){
             fscanf(infile, "%d %d", &codigo, &prioridade);
