@@ -21,18 +21,24 @@ typedef struct no{
     struct no *pai;
 } No;
 
-void alterarHeap(MaxHeap *heap, No *raiz, int codigo, int prioridade);
-No *terminarAVL(No *no, MaxHeap *heap, int chave);
-MaxHeap *criarHeap(int capacidade);
-void inserirHeap(MaxHeap *heap, Processo *processo);
-Processo *removerHeap(MaxHeap *heap, No *raiz);
-void imprimirHeap(MaxHeap *heap);
-void destruirHeap(MaxHeap *heap);
+//funções AVL
 Processo *criarProcesso(int codigo, char nome[], char estado[], int prioridade);
 No *inserirAVL(No *no, Processo *processo);  
 No *buscarAVL(No *no, int codigo);
+void imprimirAVL(FILE *outfile, No *no);
+No *terminarAVL(FILE *outfile,No *no, MaxHeap *heap, int chave);
 No *removerAVL(No *no, int chave);
-void imprimirAVL(No *no);
+
+//funções heap
+MaxHeap *criarHeap(int capacidade);
+void inserirHeap(MaxHeap *heap, Processo *processo);
+void alterarHeap(MaxHeap *heap, No *raiz, int codigo, int prioridade);
+void imprimirHeap(FILE* outfile, MaxHeap *heap);
+Processo *removerHeap(MaxHeap *heap, No *raiz);
+void destruirHeap(MaxHeap *heap);
+
+//funções hash
+
 
 int main(){
     No *raiz = NULL;
@@ -60,18 +66,18 @@ int main(){
             raiz = inserirAVL(raiz, processo);
             inserirHeap(heap, processo);
         } else if(strcmp(operacao, "ListarAVL") == 0){
-            imprimirAVL(raiz);
+            imprimirAVL(outfile, raiz);
         } else if(strcmp(operacao, "TerminarAVL") == 0){
-            raiz = terminarAVL(raiz, heap, codigo);
+            raiz = terminarAVL(outfile, raiz, heap, codigo);
         } else if(strcmp(operacao, "AlterarHeap") == 0){
             fscanf(infile, "%d %d", &codigo, &prioridade);
             alterarHeap(heap, raiz, codigo, prioridade);
         } else if(strcmp(operacao, "ListarHeap") == 0){
-            imprimirHeap(heap);
+            imprimirHeap(outfile, heap);
         } else if(strcmp(operacao, "RemoverHeap") == 0){
             removerHeap(heap, raiz);
         }else{
-            printf("Essa operacao nao existe\n");
+            fprintf(outfile, "Essa operacao nao existe\n");
         }
     }
 
@@ -131,10 +137,10 @@ void alterarHeap(MaxHeap *heap, No *raiz, int codigo, int prioridade){
     }
 }
 
-Processo *removerHeapChave(MaxHeap *heap, int chave){
+Processo *removerHeapChave(FILE *outfile, MaxHeap *heap, int chave){
     if(heap != NULL && heap->vetor != NULL){
         if(heap->vetor[0]->prioridade == 0){
-            printf("Heap vazio!\n");
+            fprintf(outfile, "Heap vazio!\n");
             return NULL;
         }
         
@@ -147,13 +153,13 @@ Processo *removerHeapChave(MaxHeap *heap, int chave){
     return NULL;
 }
 
-No *terminarAVL(No *raiz, MaxHeap *heap, int chave){
+No *terminarAVL(FILE *outfile, No *raiz, MaxHeap *heap, int chave){
     if(raiz){
         No *no = buscarAVL(raiz, chave);
         if(no){
             int i = buscarPosicaoHeap(heap, no->processo->prioridade);
             if(i != -1){
-                removerHeapChave(heap, i);
+                removerHeapChave(outfile, heap, i);
                 heapify(heap, i);
             }
             return removerAVL(raiz, chave);
@@ -220,16 +226,16 @@ Processo *removerHeap(MaxHeap *heap, No *raiz){
     return NULL;
 }
 
-void imprimirHeap(MaxHeap *heap){
+void imprimirHeap(FILE* outfile, MaxHeap *heap){
     if(heap != NULL && heap->vetor != NULL){
         if(heap->vetor[0]->prioridade == 0){
-            printf("Heap vazio!\n");
+            fprintf(outfile, "Heap vazio!\n");
         } else{
-            printf("Heap: ");
+            fprintf(outfile, "Heap: ");
             for(int i = 1; i <= heap->vetor[0]->prioridade; i++){
-                printf("%d ", heap->vetor[i]->prioridade);
+                fprintf(outfile, "%d ", heap->vetor[i]->prioridade);
             }
-            printf("\n");
+            fprintf(outfile,"\n");
         }
     }
 }
@@ -330,9 +336,9 @@ No *removerAVL(No *no, int chave){
     return no;
 }
 
-void imprimirAVL(No *no){
+void imprimirAVL(FILE* outfile, No *no){
     if(no == NULL) return;
-    imprimirAVL(no->esquerda);
-    printf("%d %s %s %d\n", no->processo->codigo, no->processo->nome, no->processo->estado, no->processo->prioridade);
-    imprimirAVL(no->direita);
+    imprimirAVL(outfile, no->esquerda);
+    fprintf(outfile, "%d %s %s %d\n", no->processo->codigo, no->processo->nome, no->processo->estado, no->processo->prioridade);
+    imprimirAVL(outfile, no->direita);
 }
