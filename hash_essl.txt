@@ -1,1 +1,0 @@
-Tempo de insercao da hash com encadeamento separado (sondagem linear): 0.00000000000000000000 ms.
