@@ -1,0 +1,13 @@
+Arvore AVL:
+1 EditorTexto PRONTO 10
+2 Compilador PRONTO 5
+3 NavegadorWeb PRONTO 8
+
+Arvore AVL:
+1 EditorTexto PRONTO 10
+2 Compilador PRONTO 5
+
+Arvore AVL:
+1 EditorTexto PRONTO 3
+4 Antivirus PRONTO 4
+

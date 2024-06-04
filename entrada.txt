@@ -1,12 +1,17 @@
 InserirAVL 1 EditorTexto 10 PRONTO
 InserirAVL 2 Compilador 5 PRONTO
 InserirAVL 3 NavegadorWeb 8 PRONTO
-ListarAVL  
+ListarAVL
 TerminarAVL 2
 ListarAVL
-AlterarHeap  1 8
+AlterarHeap 1 8
 AlterarHeap 3 6
 AlterarHeap 1 3
 ListarHeap
 RemoverHeap
 ListarHeap
+InserirAVL 4 Antivirus 4 PRONTO
+AlterarHeap 4 4
+ListarAVL
+RemoverHeap
+Terminar 4 Antivirus

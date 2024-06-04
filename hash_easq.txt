@@ -1,0 +1,1 @@
+Tempo de insercao da hash com enderecamento aberto (sondagem quadratica): 0.00000000000000000000 ms.

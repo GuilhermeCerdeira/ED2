@@ -1,3 +1,9 @@
 out.txt
 main.exe
 hash.c
+.gitignore
+hash_easl.txt
+hash_easq.txt
+hash_essl.txt
+heap.txt
+saida.txt
